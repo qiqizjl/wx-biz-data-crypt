@@ -16,17 +16,17 @@ var (
 )
 
 type UserInfo struct {
-	OpenID    string `json:"openId"`
-	UnionID   string `json:"unionId"`
-	NickName  string `json:"nickName"`
-	Gender    int    `json:"gender"`
-	City      string `json:"city"`
-	Province  string `json:"province"`
-	Country   string `json:"country"`
-	AvatarURL string `json:"avatarUrl"`
-	Language  string `json:"language"`
-	headimgUrl  string `json:"avatarUrl"`
-	Watermark struct {
+	OpenID     string `json:"openId"`
+	UnionID    string `json:"unionId"`
+	NickName   string `json:"nickName"`
+	Gender     int    `json:"gender"`
+	City       string `json:"city"`
+	Province   string `json:"province"`
+	Country    string `json:"country"`
+	AvatarURL  string `json:"avatarUrl"`
+	Language   string `json:"language"`
+	HeadimgURL string `_`
+	Watermark  struct {
 		Timestamp int64  `json:"timestamp"`
 		AppID     string `json:"appid"`
 	} `json:"watermark"`
@@ -95,5 +95,6 @@ func (w *WXBizDataCrypt) Decrypt(encryptedData, iv string) (*UserInfo, error) {
 	if userInfo.Watermark.AppID != w.appID {
 		return nil, ErrAppIDNotMatch
 	}
+	userInfo.HeadimgURL = userInfo.AvatarURL
 	return &userInfo, nil
 }
