@@ -25,6 +25,7 @@ type UserInfo struct {
 	Country   string `json:"country"`
 	AvatarURL string `json:"avatarUrl"`
 	Language  string `json:"language"`
+	headimgUrl  string `json:"avatarUrl"`
 	Watermark struct {
 		Timestamp int64  `json:"timestamp"`
 		AppID     string `json:"appid"`
